@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>arduino gui</title>
+</head>
+<body>
+  <h3>my python-based gui for the arduino temperature chamber</h3>
+  <h4>temperature chamber project in short</h4>
+  <p>the temperature chamber is a complete system for benchmark testing and stress-testing electronic boards in a controlled thermal environment. it combines accessible hardware, advanced firmware, and a python-based desktop application to achieve precise temperature control, test execution, and real-time monitoring. the system is designed to standardize thermal testing while prioritizing accessibility and replicability with cost-effective, off-the-shelf components.</p>
+  <h4>desktop application</h4>
+  <p>the python-based desktop application, which is the part of the whole project that i developed, provides an intuitive interface to interact with the chamber. however, working with a gui is not just about the interface itself. its high performance depends entirely on what's happening under the hood, where the most essential parts of the design are.<br/>there are at least two arduino boards involved in the temperature chamber: the contol board on the outside of the chamber, and at least one test board inside it. the gui needs to send commands to the control board and receive real-time data from it for display and analysis. in terms of the test board(s), it is responsible for uploading the test sketches onto them (using cli commands) as well as continuously receiving and logging their output. the logic i developed for direct test output processing accounts for both deterministic and non-deterministic testing.<br/></p>
+  <ul>
+    <li>making serial communication with the arduino boards smooth and reliable, while using two or more serial ports (also a wifi port). in pyqt5, this requires well-designed threading and port management to improve gui's responsiveness and performance, and prevent port blocking.</li>
+    <li>developing communication protocol with the finite state machine</li>
+
+  </ul>
+  <h4>features:</h4>
+  <ul>
+    <li>real-time monitoring of temperature and test progress</li>
+    <li>queue management for uploading and managing test configurations</li>
+    <li>manual control for setting temperature and duration</li>
+    <li>wifi boards for testing microcontroller performance</li>
+    <li>error notifications for connection issues and interruptions</li>
+    <li>detailed logging for debugging and analysis</li>
+  </ul>
+</body>
+</html>
