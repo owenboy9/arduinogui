@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap');
+
+*{
+  color: black;
+  font-family: "Lekton", monospace;
+  font-weight: 400;
+  font-style: normal;
+  text-align: justify;
+}
+
+body {
+  padding-left: 6rem;
+  padding-right: 6rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+p, li {
+  font-size: 1.2rem;
+}
