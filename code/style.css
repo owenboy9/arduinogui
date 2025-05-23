@@ -40,3 +40,29 @@ footer{
   align-items: center;
   margin-top: 5rem;
 }
+
+.pics{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  gap: 2rem;
+}
+
+.pics img  {
+  width: 12rem;
+}
+
+.video {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.video video {
+  width: 80%;       /* or 720px, 100%, etc. */
+  max-width: 800px; /* optional: limits size on big screens */
+  height: auto;
+  border-radius: 8px; /* optional: soft rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* optional: subtle shadow */
+  object-fit: contain;
+}

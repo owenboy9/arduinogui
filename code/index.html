@@ -17,6 +17,12 @@
   <h1>python-based gui for the arduino temperature chamber</h1>
   <h2>temperature chamber project in short</h2>
   <p>the temperature chamber is a complete system for benchmark testing and stress-testing electronic boards in a controlled thermal environment. it combines accessible hardware, advanced firmware, and a python-based desktop application to achieve precise temperature control, test execution, and real-time monitoring. the system is designed to standardize thermal testing while prioritizing accessibility and replicability with cost-effective, off-the-shelf components.</p>
+  <div class="video">
+    <video controls poster="../assets/pics/start.png">
+      <source src="../assets/videos/start.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
   <h2>desktop application</h2>
   <p>the python-based desktop application, which is the part of the whole project that i developed, provides an intuitive interface to interact with the chamber. however, working with a gui is not just about the interface itself. its high performance depends entirely on what's happening under the hood, where the most essential parts of the design reside.<br/>there are at least two arduino boards involved in the temperature chamber: the contol board on the outside of the chamber, and at least one test board inside it. the gui needs to send commands to the control board and receive real-time data from it for display and analysis. in terms of the test board(s), it is responsible for uploading the test sketches onto them (using cli commands) as well as continuously receiving and logging their output. the logic i developed for direct test output processing accounts for both deterministic and non-deterministic testing.</p>
   <h2>features</h2>
@@ -28,13 +34,22 @@
     <li>error notifications for connection issues and interruptions</li>
     <li>detailed logging for debugging and analysis</li>
   </ul>
+  <div class="video">
+    <video controls 
+    preload="metadata" 
+    poster="../assets/pics/upload.png">
+      <source src="../assets/videos/manual.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    
+  </div>
   <h2>some of the more exciting technical aspects of gui development</h2>
   <ul>
     <li>THREADING _____ in pyqt5, making serial communication with the arduino boards smooth and reliable, while using two or more serial ports (also a wifi port), requires well-designed threading and port management to improve the gui's performance, and prevent port access conflicts and blocking. this also implies sub-threading and temporary port-killing as well as their subsequent resuscitation.</li>
     <li>COMMUNICATION PROTOCOL _____ developing a communication protocol with a finite state machine is essential to securing a reliable exchange between the gui and the control board. its cornerstone elements are 'handshake' and 'ping.' handshake checks if the serial communication is working, and it transmits some basic data between the gui and the control board, such as current timestamp for accurate operation synchronization. ping is sent to the board continuously at an interval of 500 milliseconds, and its role is twofold. firstly, it retrieves all current info on, for example, machine state, temperature inside the chamber, test queue and current test sequence, for precise monitoring and display updates. its second purpose is to make sure the serial communication is working at all times: if ping does not come back from the control board for a specific time, the user gets an alert.<br/>in the case of the test board(s), the situation is simpler, as there is no need for timestamp synchronization or other data updates. the only purpose of a communication protocol here is to check if the serial communication is not broken. all other deviancies are handled differently: a failure in sketch compilation and upload will immediately raise errors, while incorrect test output transmission, as a part of the test itself, gets logged and visually signalled in the gui.</li>
     <li>TEST PROGRESS BARS _____ </li>
     <li>EDGE-CASE ERROR HANDLING _____</li>
-    <li>CLI COMMANDS _____</li>
+    <li>USING CLI COMMANDS _____</li>
   </ul>
   <footer>© 2025 owen kraus</footer>
 </body>
